@@ -1,46 +1,57 @@
-<h2 mat-dialog-title>Leave form</h2>
+<div class="row">
+    <div class="col-12">
+        <h2 mat-dialog-title>Leave form</h2>
 
-<form [formGroup]="leaveForm" (ngSubmit)="onLeaveSubmit()">
-    <mat-dialog-content class="mat-typography">
+        <form [formGroup]="leaveForm" (ngSubmit)="onLeaveSubmit()">
+            <mat-dialog-content class="mat-typography">
 
-        <mat-form-field class="example-full-width w-100" appearance="fill">
-            <mat-label>Employ Name</mat-label>
-            <input matInput formControlName="empName">
-        </mat-form-field>
-
-
-
-
-        <mat-form-field color="primary" appearance="fill">
-            <mat-label>Start Date</mat-label>
-            <input matInput [matDatepicker]="pickerName" formControlName="startDate">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="pickerName"></mat-datepicker-toggle>
-            <mat-datepicker #pickerName></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field color="primary" appearance="fill">
-            <mat-label>End Date</mat-label>
-            <input matInput [matDatepicker]="pickerName2" formControlName="endDate">
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="pickerName2"></mat-datepicker-toggle>
-            <mat-datepicker #pickerName2 color="primary"></mat-datepicker>
-        </mat-form-field>
-
-        <p>
-            <mat-form-field class="example-full-width w-100 " appearance="fill">
-                <mat-label>Reason for Leave</mat-label>
-                <textarea matInput rows="5" formControlName="reason"></textarea>
-            </mat-form-field>
-        </p>
+                <mat-form-field class="example-full-width w-100" appearance="fill">
+                    <mat-label>Employ Name</mat-label>
+                    <input matInput formControlName="empName">
+                </mat-form-field>
 
 
 
-    </mat-dialog-content>
-    <mat-dialog-actions align="end">
-        <button mat-button mat-dialog-close type="button">Cancel</button>
-        <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Submit</button> -->
-        <button mat-raised-button color="primary" [mat-dialog-close]="true" type="submit"
-            [disabled]="leaveForm.invalid">Submit</button>
-    </mat-dialog-actions>
-</form>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <mat-form-field color="primary" appearance="fill" class="example-full-width w-100">
+                            <mat-label>Start Date</mat-label>
+                            <input matInput [matDatepicker]="pickerName" formControlName="startDate" [min]="minDate">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="pickerName"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerName></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-6">
+                        <mat-form-field color="primary" appearance="fill" class="example-full-width w-100">
+                            <mat-label>End Date</mat-label>
+                            <input matInput [matDatepicker]="pickerName2" formControlName="endDate" [min]="minDate">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker-toggle matSuffix [for]="pickerName2"></mat-datepicker-toggle>
+                            <mat-datepicker #pickerName2 color="primary"></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+
+
+                <p>
+                    <mat-form-field class="example-full-width w-100 " appearance="fill">
+                        <mat-label>Reason for Leave</mat-label>
+                        <textarea matInput rows="5" formControlName="reason"></textarea>
+                    </mat-form-field>
+                </p>
+
+
+
+            </mat-dialog-content>
+            <mat-dialog-actions align="end">
+                <button mat-button mat-dialog-close type="button">Cancel</button>
+                <!-- <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Submit</button> -->
+                <button mat-raised-button color="primary" [mat-dialog-close]="true" type="submit"
+                    [disabled]="leaveForm.invalid">Submit</button>
+            </mat-dialog-actions>
+        </form>
+    </div>
+</div>

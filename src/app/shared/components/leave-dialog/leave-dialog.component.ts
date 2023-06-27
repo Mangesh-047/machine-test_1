@@ -10,7 +10,9 @@ import { Ileaves, leaveStatus } from '../../model/leaves';
 })
 export class LeaveDialogComponent implements OnInit {
 
-
+  minDate = new Date();
+  // maxDate = new Date(2023, 11, 31);
+  // defaultDate = new Date();
   constructor(
     private _http: HttpClient
   ) { }

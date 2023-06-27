@@ -4,7 +4,7 @@
             <mat-card-title *ngIf="alreadyHaveAccount" class="mb-4">
                 Log In
             </mat-card-title>
-            <mat-card-title *ngIf="!alreadyHaveAccount" class="mb-4">
+            <mat-card-title *ngIf="!alreadyHaveAccount" class="mb-4 ">
                 Sign Up
             </mat-card-title>
 
@@ -115,20 +115,32 @@
                             </mat-error>
                         </mat-form-field>
 
+
                         <mat-form-field appearance="fill">
+
                             <mat-label>ReEnter your password</mat-label>
-                            <input matInput [type]="hide ? 'password' : 'text'" #signInRePassword="ngModel" ngModel
+                            <input matInput [type]="hide1 ? 'password' : 'text'" #signInRePassword="ngModel" ngModel
                                 name="repassword" required
-                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
-                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                                [attr.aria-pressed]="hide">
-                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
+                                [disabled]="(signInPassword.invalid)? true: false">
+
+                            <button mat-icon-button matSuffix (click)=" hide1=!hide1"
+                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
                             </button>
 
-                            <mat-error *ngIf="signInRePassword.dirty && signInPassword !== signInRePassword ">
+                            <!-- <mat-error *ngIf="signInRePassword.errors?.['required']">
+                                This field is Mandatory
+                            </mat-error> -->
+
+                            <mat-error *ngIf="signInPassword.value !== signInRePassword.value">
                                 please use same password
                             </mat-error>
-                            <!-- <mat-error *ngIf="signInRePassword.errors?.['pattern']">
+
+
+
+
+                            <!-- <mat-error *ngIf=" signInRePassword.errors?.['pattern']">
                                 password should be container atleast one capital letter , one specail character,
                                 one
                                 number
@@ -151,7 +163,7 @@
                         </mat-form-field> -->
 
 
-                        <button mat-raised-button color="primary" type="submit">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">
                             Create Account
                         </button>
 
@@ -162,8 +174,14 @@
                             class="btn btn-link mt-4">
                             Already! have account
                         </a>
+
+
                     </p>
 
+                    <!-- <p>
+                        {{signInPassword.value}}
+                        {{signInRePassword.value}}
+                    </p> -->
 
                 </ng-container>
             </mat-card-content>

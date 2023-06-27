@@ -20,6 +20,7 @@ import { IntercepterService } from './shared/services/intercepter.service';
 import { StaffLeavesCardComponent } from './shared/components/dashboard/staff-leaves-card/staff-leaves-card.component';
 import { LeaveStatusPipe } from './shared/pipes/leave-status.pipe';
 import { HodLeaveCardComponent } from './shared/components/hod-dashboard/hod-leave-card/hod-leave-card.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { HodLeaveCardComponent } from './shared/components/hod-dashboard/hod-lea
     HodDashboardComponent,
     StaffLeavesCardComponent,
     LeaveStatusPipe,
-    HodLeaveCardComponent
+    HodLeaveCardComponent,
+    PageNotFoundComponent
 
   ],
   imports: [

@@ -30,8 +30,12 @@
                 <p class="d-flex justify-content-end">
                     <button mat-raised-button color="primary" *ngIf="leave.status === 'Pending'"
                         (click)="onApprove(leave)">Approve</button>
+
+
                     <button mat-raised-button color="warn" class="ml-3" *ngIf="leave.status === 'Pending'"
                         (click)="onReject(leave)">Reject</button>
+
+
                 </p>
             </div>
         </div>

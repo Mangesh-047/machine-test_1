@@ -11,7 +11,8 @@ export const environment = {
     storageBucket: "machine-test-1-a4b52.appspot.com",
     messagingSenderId: "297557196193",
     appId: "1:297557196193:web:72ad7864a86b768c4e9fe0"
-  }
+  },
+  baseUrl: `https://machine-test-1-a4b52-default-rtdb.asia-southeast1.firebasedatabase.app`
 };
 
 

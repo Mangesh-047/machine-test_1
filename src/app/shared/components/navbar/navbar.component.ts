@@ -17,9 +17,12 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this._authService.loginStatus
-      .subscribe(res => this.isLogin = res)
+      .subscribe(res => {
+        this.isLogin = res
+        this.userRole = localStorage.getItem('userRole')!
+      })
 
-    this.userRole = localStorage.getItem('userRole')!
+
 
   }
 

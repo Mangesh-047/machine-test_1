@@ -7,6 +7,7 @@ import { HodDashboardComponent } from './shared/components/hod-dashboard/hod-das
 import { StaffLeavesCardComponent } from './shared/components/dashboard/staff-leaves-card/staff-leaves-card.component';
 import { HodLeaveCardComponent } from './shared/components/hod-dashboard/hod-leave-card/hod-leave-card.component';
 import { UserRoleGuard } from './shared/services/user-role.guard';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -15,10 +16,12 @@ const routes: Routes = [
   },
 
   {
-    path: 'dashboard',
+    path: 'staff-dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
-
+    data: {
+      userRole: 'staff'
+    }
   },
 
   // {
@@ -39,11 +42,24 @@ const routes: Routes = [
   // },
 
   {
-    path: 'dashBoard',
+    path: 'hod-dashboard',
     component: HodDashboardComponent,
-    canActivate: [AuthGuard, UserRoleGuard]
+    canActivate: [AuthGuard],
+    data: {
+      userRole: 'staff'
+    }
     // canActivate: [AuthGuard]
   },
+  {
+    path: 'page-not-found', component: PageNotFoundComponent,
+    data: {
+      pageNotFound: 'Opps ....Page Not Found.....!!!! 404 '
+    }
+  },
+  {
+    path: '**', redirectTo: 'page-not-found',
+
+  }
 ];
 
 @NgModule({

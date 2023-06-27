@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { BehaviorSubject } from 'rxjs';
+import { SnacbarService } from './snacbar.service';
 
 
 @Injectable({
@@ -14,7 +15,8 @@ export class AuthService {
 
   constructor(
     private _router: Router,
-    private _afAuth: AngularFireAuth
+    private _afAuth: AngularFireAuth,
+    private _snacbar: SnacbarService
   ) { }
 
   // userData: Array<any> = [
@@ -47,10 +49,14 @@ export class AuthService {
     // this.loginStatus = false
     // this._router.navigate(['/'])
 
-    localStorage.removeItem('userRole')
-    this._router.navigate(['/'])
 
     this._afAuth.signOut()
+      .then(res => {
+
+        localStorage.removeItem('userRole')
+        this._router.navigate(['/'])
+        this._snacbar.snacbarOpen('Log Out.........!!!!  successfully')
+      })
   }
 
 

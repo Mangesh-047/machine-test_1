@@ -9,12 +9,12 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                 *ngIf="userRole.includes('staff')">
-                <a class="nav-link" routerLink="/dashboard">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/staff-dashboard">Home <span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                 *ngIf="userRole.includes('hod')">
-                <a class="nav-link" routerLink="/dashBoard">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" routerLink="/hod-dashboard">Home <span class="sr-only">(current)</span></a>
             </li>
             <!-- 
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"

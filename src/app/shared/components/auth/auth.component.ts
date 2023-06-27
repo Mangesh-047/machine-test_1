@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
@@ -14,8 +14,10 @@ import { SnacbarService } from '../../services/snacbar.service';
 export class AuthComponent implements OnInit {
 
   hide = true;
+  hide1 = true;
 
   alreadyHaveAccount: boolean = false
+
 
   constructor(
     private _authService: AuthService,
@@ -27,11 +29,14 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('userRole')?.includes('staff')) {
-      this._router.navigate(['/dashboard'])
+      this._router.navigate(['/staff-dashboard'])
     } else if (localStorage.getItem('userRole')?.includes('hod')) {
-      this._router.navigate(['/dashBoard'])
+      this._router.navigate(['/hod-dashboard'])
 
     }
+
+
+
   }
 
   onLogin(loginForm: NgForm) {
@@ -64,7 +69,7 @@ export class AuthComponent implements OnInit {
               console.log(userRole);
               localStorage.setItem('userRole', userRole)
 
-              localStorage.getItem('userRole')?.includes('hod') ? this._router.navigate(['/dashBoard']) : this._router.navigate(['/dashboard'])
+              localStorage.getItem('userRole')?.includes('hod') ? this._router.navigate(['/hod-dashboard']) : this._router.navigate(['/staff-dashboard'])
 
               // localStorage.getItem('userRole') === 'USER' ? 
 
@@ -111,4 +116,7 @@ export class AuthComponent implements OnInit {
     }
 
   }
+
+
+
 }

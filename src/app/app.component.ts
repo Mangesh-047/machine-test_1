@@ -11,9 +11,7 @@ export class AppComponent implements OnInit {
 
   isLoading: boolean = false
 
-  // minDate = new Date();
-  // maxDate = new Date(2023, 11, 31);
-  // defaultDate = new Date();
+
 
   constructor(
     private _lodaerService: LoaderService
