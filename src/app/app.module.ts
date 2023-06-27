@@ -21,6 +21,7 @@ import { StaffLeavesCardComponent } from './shared/components/dashboard/staff-le
 import { LeaveStatusPipe } from './shared/pipes/leave-status.pipe';
 import { HodLeaveCardComponent } from './shared/components/hod-dashboard/hod-leave-card/hod-leave-card.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
     StaffLeavesCardComponent,
     LeaveStatusPipe,
     HodLeaveCardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    DropdownDirective
 
   ],
   imports: [
