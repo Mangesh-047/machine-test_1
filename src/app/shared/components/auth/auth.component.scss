@@ -1,0 +1,45 @@
+.main {
+    height: 100vh;
+    background-image: url('https://images.unsplash.com/photo-1557682250-33bd709cbe85?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHVycGxlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-card {
+        width: 500px;
+
+
+    }
+}
+
+
+.mat-card {
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: relative;
+    padding: 16px;
+    border-radius: 4px;
+
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.58) 0%, #FFFFFF 54.69%, rgba(228, 228, 228, 0.88) 100%);
+    border-radius: 15px;
+
+
+}
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}
+
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+}

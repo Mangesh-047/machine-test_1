@@ -1,0 +1,26 @@
+<ng-container *ngIf="leaveArrayLength > 0">
+
+    <div class="col-sm-2 offset-sm-10">
+        <div class="">
+            <!-- <button class="btn btn-primary" (click)="openDialog()">Apply Leaves</button> -->
+            <button mat-raised-button color="primary" (click)="openDialog()">Apply Leaves</button>
+        </div>
+
+    </div>
+    <app-staff-leaves-card></app-staff-leaves-card>
+
+</ng-container>
+
+
+<ng-container *ngIf="leaveArrayLength <= 0">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="content">
+                <h2 class="text-danger">Not applied any leaves</h2>
+                <!-- <button class="btn btn-primary" (click)="openDialog()">Apply Leaves</button> -->
+                <button mat-raised-button color="primary" (click)="openDialog()">Apply Leaves</button>
+            </div>
+
+        </div>
+    </div>
+</ng-container>

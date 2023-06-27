@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isLogin">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                *ngIf="userRole.includes('staff')">
+                <a class="nav-link" routerLink="/dashboard">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                *ngIf="userRole.includes('hod')">
+                <a class="nav-link" routerLink="/dashBoard">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <!-- 
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                *ngIf="userRole.includes('USER')">
+                <a class="nav-link" routerLink="/staff-leaves">Leaves</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                *ngIf="userRole.includes('ADMIN')">
+                <a class="nav-link" routerLink="/hod-leaves">hod Leaves</a>
+            </li> -->
+            <li class="nav-item">
+                <!-- <button class="btn btn-success" (click)="logIn()">Log In</button> -->
+
+            </li>
+            <li class="nav-item ml-3">
+                <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+            </li>
+        </ul>
+
+    </div>
+</nav>

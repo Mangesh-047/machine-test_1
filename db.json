@@ -1,0 +1,25 @@
+{
+  "leaves": [
+    {
+      "id": 1,
+      "staffName": "rios",
+      "empId": "#4545",
+      "startDate": "json-server",
+      "endDate": "typicode",
+      "reasoan": "family function",
+      "status": "pending, approve, reject",
+      "email": "123",
+      "pass": "123"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

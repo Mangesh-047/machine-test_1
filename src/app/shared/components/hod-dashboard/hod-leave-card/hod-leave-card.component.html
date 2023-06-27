@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-sm-6" *ngFor="let leave of leavesArray">
+        <div class="card mb-3 shadow">
+            <div class="card-body">
+                <h2>Employ Name</h2>
+                <h3>{{leave.empName}}</h3>
+
+                <p>
+                    {{leave.startDate | date }} - {{leave.endDate | date}}
+                </p>
+
+
+
+                <h2>
+                    Reason
+                </h2>
+                <p>
+                    {{leave.reason}}
+                </p>
+
+                <h2>
+                    Status
+                </h2>
+
+                <p class="alert"
+                    [ngClass]="{' alert-success': leave.status === 'Approved', ' alert-warning' : leave.status === 'Pending',  ' alert-danger' : leave.status === 'Reject'}">
+                    {{leave.status}}
+                </p>
+
+                <p class="d-flex justify-content-end">
+                    <button mat-raised-button color="primary" *ngIf="leave.status === 'Pending'"
+                        (click)="onApprove(leave)">Approve</button>
+                    <button mat-raised-button color="warn" class="ml-3" *ngIf="leave.status === 'Pending'"
+                        (click)="onReject(leave)">Reject</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
