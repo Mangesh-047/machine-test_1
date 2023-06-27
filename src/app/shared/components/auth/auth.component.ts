@@ -26,10 +26,10 @@ export class AuthComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('userRole')?.includes('USER')) {
-      this._router.navigate(['/staff-dashboard'])
-    } else if (localStorage.getItem('userRole')?.includes('ADMIN')) {
-      this._router.navigate(['/hod-dashboard'])
+    if (localStorage.getItem('userRole')?.includes('staff')) {
+      this._router.navigate(['/dashboard'])
+    } else if (localStorage.getItem('userRole')?.includes('hod')) {
+      this._router.navigate(['/dashBoard'])
 
     }
   }
