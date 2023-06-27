@@ -42,11 +42,11 @@ export class AuthComponent implements OnInit {
       let { email, password } = loginForm.value
       console.log(email, password);
 
-      this._loaderService.loaderStatus.next(true)
+      // this._loaderService.loaderStatus.next(true)
 
       setTimeout(() => {
-        this._authService.loginStatus.next(true)
-        this._loaderService.loaderStatus.next(false)
+        // this._authService.loginStatus.next(true)
+        // this._loaderService.loaderStatus.next(false)
 
       }, 1000);
 

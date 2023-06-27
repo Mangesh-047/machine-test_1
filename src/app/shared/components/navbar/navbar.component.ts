@@ -8,7 +8,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
-  userRole = localStorage.getItem('userRole')!
+  userRole!: string
 
   isLogin: boolean = false
   constructor(
@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
     this._authService.loginStatus
       .subscribe(res => this.isLogin = res)
 
+    this.userRole = localStorage.getItem('userRole')!
 
   }
 
