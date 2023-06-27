@@ -41,7 +41,6 @@ export class AuthService {
     // } else {
     //   alert('error')
     // }
-
     return this._afAuth.signInWithEmailAndPassword(email as string, pass as string)
   }
 

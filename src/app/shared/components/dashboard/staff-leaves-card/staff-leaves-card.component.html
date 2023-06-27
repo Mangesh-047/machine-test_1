@@ -2,7 +2,7 @@
     <div class="col-sm-2 text-center">
         <p class="display-1">
 
-            {{leavesArray.length}}
+            {{leaveArray.length}}
 
         </p>
 
@@ -13,7 +13,7 @@
     <div class="col-sm-2 text-center">
         <p class="display-1">
 
-            {{approved.length}}
+            {{approvedLength}}
 
         </p>
 
@@ -24,7 +24,7 @@
     <div class="col-sm-2 text-center">
         <p class="display-1">
 
-            {{reject.length}}
+            {{rejectLength}}
 
         </p>
 
@@ -36,13 +36,13 @@
 </div>
 
 <div class="row mt-4">
-    <div class="col-sm-4" *ngFor="let leave of leavesArray">
+    <div class="col-sm-4" *ngFor="let leave of leaveArray">
         <div class="card mb-3 shadow">
             <div class="card-body">
                 <h1>{{leave.empName}}</h1>
 
                 <p>
-                    {{leave.startDate | date }} - {{leave.endDate | date}}
+                    <strong>Date :</strong> {{leave.startDate | date }} - {{leave.endDate | date}}
                 </p>
 
 

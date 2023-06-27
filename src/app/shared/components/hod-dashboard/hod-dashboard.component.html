@@ -1,8 +1,16 @@
 <ng-container>
-    <app-hod-leave-card></app-hod-leave-card>
+
+    <app-hod-leave-card [leavesArray]="leavesArray"></app-hod-leave-card>
 </ng-container>
 
 
-<!-- <ng-container *ngIf="">
-    <h2 class="text-danger">Not applied any leaves</h2>
-</ng-container> -->
+
+
+<ng-container *ngIf="leavesArray.length <= 0 ">
+    <div class="content">
+
+        <p class="display-4 text-danger text-center">
+            No leave Request Available
+        </p>
+    </div>
+</ng-container>

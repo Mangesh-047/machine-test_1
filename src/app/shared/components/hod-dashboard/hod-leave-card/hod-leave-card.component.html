@@ -6,7 +6,7 @@
                 <h3>{{leave.empName}}</h3>
 
                 <p>
-                    {{leave.startDate | date }} - {{leave.endDate | date}}
+                    <strong>Date :</strong> {{leave.startDate | date }} - {{leave.endDate | date}}
                 </p>
 
 
@@ -22,8 +22,13 @@
                     Status
                 </h2>
 
-                <p class="alert"
+                <p class="alert d-flex align-ttems-center " style="font-size: 20px;"
                     [ngClass]="{' alert-success': leave.status === 'Approved', ' alert-warning' : leave.status === 'Pending',  ' alert-danger' : leave.status === 'Reject'}">
+                    <mat-icon class="mr-2"
+                        *ngIf=" leave.status === 'Approved' || leave.status === 'Reject'">{{leave.status ===
+                        'Approved'? 'check' : 'close'}}</mat-icon>
+
+
                     {{leave.status}}
                 </p>
 

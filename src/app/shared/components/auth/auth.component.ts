@@ -5,6 +5,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { LoaderService } from '../../services/loader.service';
 import { SnacbarService } from '../../services/snacbar.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-auth',
@@ -24,7 +25,8 @@ export class AuthComponent implements OnInit {
     private _fireStore: AngularFirestore,
     private _router: Router,
     private _loaderService: LoaderService,
-    private _snacbarService: SnacbarService
+    private _snacbarService: SnacbarService,
+    private _userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -42,10 +44,10 @@ export class AuthComponent implements OnInit {
   onLogin(loginForm: NgForm) {
     if (loginForm.valid) {
 
-      console.log(loginForm.value);
+      // console.log(loginForm.value);
 
       let { email, password } = loginForm.value
-      console.log(email, password);
+      // console.log(email, password);
 
       // this._loaderService.loaderStatus.next(true)
 
@@ -58,16 +60,19 @@ export class AuthComponent implements OnInit {
       this._authService.logInToApp(email, password)
         .then(res => {
           // this._router.navigate(['/staff-dashboard'])
-          console.log(res)
+          // console.log(res)
           // this.alreadyHaveAccount = true
+
           const uid = res.user?.uid
+          // this._userService.userID.next(uid)
+
           this._fireStore.collection('user').doc(uid).get()
             .subscribe((res: any) => {
-              console.log(res.data());
-              const userRole = res.data().role
-
-              console.log(userRole);
-              localStorage.setItem('userRole', userRole)
+              // console.log(res.data());
+              const userObj = res.data()
+              // this._userService.userObj.next(res.data())
+              // console.log(userObj);
+              localStorage.setItem('userRole', userObj.role)
 
               localStorage.getItem('userRole')?.includes('hod') ? this._router.navigate(['/hod-dashboard']) : this._router.navigate(['/staff-dashboard'])
 
@@ -76,23 +81,26 @@ export class AuthComponent implements OnInit {
 
             })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+          // console.log(err)
+          this._snacbarService.snacbarOpen(err)
+        })
 
     }
   }
 
   onSignUp(signUpForm: NgForm) {
     if (signUpForm.valid) {
-      console.log(signUpForm);
-      console.log(signUpForm.value);
+      // console.log(signUpForm);
+      // console.log(signUpForm.value);
 
 
       // let email = signUpForm.value.email
       // let pass = signUpForm.value.password
 
-      let { email, password, userRole } = signUpForm.value
+      let { email, password, userRole, firstName } = signUpForm.value
 
-      console.log(email, password, userRole);
+      // console.log(email, password, userRole, firstName);
 
 
       // console.log({ email, pass } = signUpForm.value);
@@ -100,12 +108,13 @@ export class AuthComponent implements OnInit {
       this._authService.SignUp(email, password)
         .then((res) => {
           this._snacbarService.snacbarOpen('Account created successully')
-          console.log(res);
-          console.log(res.user);
+          // console.log(res);
+          // console.log(res.user);
           const uid = res.user?.uid;
-          console.log(uid);
+          // console.log(uid);
           this._fireStore.collection('user').doc(uid).set({
-            role: userRole
+            role: userRole,
+            firstName: firstName
           })
         })
         .catch((err) => {

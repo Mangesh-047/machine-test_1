@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -6,14 +6,19 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
 
   userRole!: string
 
   isLogin: boolean = false
+
   constructor(
     private _authService: AuthService
   ) { }
+
+
+  ngAfterViewInit(): void {
+  }
 
   ngOnInit(): void {
     this._authService.loginStatus

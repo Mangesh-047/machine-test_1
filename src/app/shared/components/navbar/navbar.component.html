@@ -7,14 +7,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                 *ngIf="userRole.includes('staff')">
                 <a class="nav-link" routerLink="/staff-dashboard">Home <span class="sr-only">(current)</span></a>
             </li>
 
-            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                 *ngIf="userRole.includes('hod')">
                 <a class="nav-link" routerLink="/hod-dashboard">Home <span class="sr-only">(current)</span></a>
+            </li>
+
+            <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link">Profile <span class="sr-only">(current)</span></a>
             </li>
             <!-- 
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
@@ -31,8 +35,14 @@
 
             </li>
 
-            <button mat-raised-button color="warn" (click)="logOut()">Log Out</button>
+
         </ul>
 
+        <button mat-raised-button color="warn" (click)="logOut()">
+            <mat-icon>
+                account_circle
+            </mat-icon>
+            Log Out
+        </button>
     </div>
 </nav>

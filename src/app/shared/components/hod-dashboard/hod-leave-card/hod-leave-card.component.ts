@@ -1,6 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { map, tap } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Ileaves, leaveStatus } from 'src/app/shared/model/leaves';
 import { LeaveService } from 'src/app/shared/services/leave.service';
 
@@ -11,61 +9,35 @@ import { LeaveService } from 'src/app/shared/services/leave.service';
 })
 export class HodLeaveCardComponent implements OnInit {
 
-  leavesArray: Array<any> = []
-
+  // leavesArray: Array<any> = []
+  @Input('leavesArray')
+  leavesArray!: Array<Ileaves>
   constructor(
     private _leaveService: LeaveService,
-    private _http: HttpClient
   ) { }
 
   ngOnInit(): void {
-    this._leaveService.getAllLeaves()
-      .pipe(
-        tap(res => console.log(res)),
-        map(res => {
-          const leavesArray: Array<any> = []
-          for (const key in res) {
-            // console.log(res[key]);
-            console.log(key);
-            let obj = {
-              id: key,
-              empName: res[key].empName,
-              startDate: res[key].startDate,
-              endDate: res[key].endDate,
-              reason: res[key].reason,
-              status: res[key].status
-            }
-
-            console.log(obj);
-            leavesArray.push(obj)
-          }
-          console.log(leavesArray);
-
-
-          return leavesArray
-
-        })
-      )
-      .subscribe(
-        res => {
-          console.log(res);
-          this.leavesArray = res
-        }
-      )
+    // this._leaveService.getAllLeaves()
+    //   .subscribe(
+    //     res => {
+    //       // console.log(res);
+    //       this.leavesArray = res
+    //     }
+    //   )
   }
 
   onApprove(leave: Ileaves) {
-    console.log(leave);
+    // console.log(leave);
 
     let obj = {
       status: leaveStatus.Approved
     }
-    this._http.patch(`https://machine-test-1-a4b52-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${leave.id}.json`, obj)
+    // this._http.patch(`${environment.baseUrl}/leaves/${leave.id}.json`, obj)
+    this._leaveService.getApprove(leave)
       .subscribe(
         res => {
           this.leavesArray.forEach(e => {
             if (e.id === leave.id) {
-
               e.status = obj.status
             }
           })
@@ -75,17 +47,17 @@ export class HodLeaveCardComponent implements OnInit {
 
 
   onReject(leave: Ileaves) {
-    console.log(leave);
+    // console.log(leave);
 
     let obj = {
       status: leaveStatus.Reject
     }
-    this._http.patch(`https://machine-test-1-a4b52-default-rtdb.asia-southeast1.firebasedatabase.app/leaves/${leave.id}.json`, obj)
+    // this._http.patch(`${environment.baseUrl}/leaves/${leave.id}.json`, obj)
+    this._leaveService.getReject(leave)
       .subscribe(
         res => {
           this.leavesArray.forEach(e => {
             if (e.id === leave.id) {
-
               e.status = obj.status
             }
           })
