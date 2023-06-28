@@ -20,7 +20,7 @@
                                     <mat-label>Enter your email</mat-label>
                                     <input type="text" name="email" placeholder="jhon@gmail.com" matInput ngModel
                                         #logInEmail="ngModel" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                                        required="">
+                                        class="text-lowercase" required>
 
                                     <mat-error *ngIf="logInEmail.errors?.['required']">
                                         This field is Mandatory
@@ -113,8 +113,8 @@
                                             <!-- <label class="sr-only" for="email">Email</label> -->
                                             <mat-label>Enter your email</mat-label>
                                             <input type="text" name="email" placeholder="jhon@gmail.com" matInput
-                                                ngModel #SignInemail="ngModel"
-                                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required="">
+                                                ngModel #SignInemail="ngModel" class="text-lowercase"
+                                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
 
                                             <mat-error *ngIf="SignInemail.errors?.['required']">
                                                 This field is Mandatory
@@ -127,11 +127,16 @@
                                     <div class="col-sm-6">
                                         <mat-form-field class="example-full-width w-100" appearance="fill">
                                             <mat-label>Contact</mat-label>
-                                            <input matInput #SignUpContactName="ngModel" ngModel name="contactName">
+                                            <input matInput #SignUpContactName="ngModel" ngModel name="contact">
 
                                             <mat-error *ngIf="SignUpContactName.errors?.['required']">
                                                 This field is Mandatory
                                             </mat-error>
+
+                                            <!-- <mat-label>Telephone</mat-label>
+                                            <span matPrefix>+1 &nbsp;</span>
+                                            <input type="tel" matInput placeholder="555-555-1234">
+                                            <mat-icon matSuffix>mode_edit</mat-icon> -->
                                         </mat-form-field>
 
                                         <!-- <mat-form-field class="example-full-width w-100" appearance="fill">
@@ -198,6 +203,7 @@
 
 
 
+                                            <!-- "password2.invalid && !password2.hasError('required')" -->
 
                                             <!-- <mat-error *ngIf=" signInRePassword.errors?.['pattern']">
                                         password should be container atleast one capital letter , one specail character,

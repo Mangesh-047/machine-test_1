@@ -123,7 +123,7 @@ export class AuthComponent implements OnInit {
             role: userRole,
             firstName: firstName,
             lastName: lastName,
-            email: email,
+            email: email.toLowerCase(),
             pass: password
           })
         })

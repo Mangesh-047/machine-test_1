@@ -7,3 +7,14 @@
     align-items: center;
     flex-direction: column;
 }
+
+
+
+
+@media screen and (max-width: 600px) {
+
+    .btn-div {
+        text-align: right;
+        margin-bottom: 50px;
+    }
+}

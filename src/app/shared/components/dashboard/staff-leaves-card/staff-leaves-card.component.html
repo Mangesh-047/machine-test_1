@@ -35,16 +35,20 @@
 
 </div>
 
-<div class="row mt-4">
+<div class="row mt-4 smd">
     <div class="col-sm-4" *ngFor="let leave of leaveArray">
         <div class="card mb-3 shadow">
             <div class="card-body">
                 <h1>{{leave.empName}}</h1>
-
+                <hr class="bg-secondary">
                 <p>
                     <strong>Date :</strong> {{leave.startDate | date }} - {{leave.endDate | date}}
                 </p>
 
+
+                <h2>
+                    Number Of days {{leave.numOfDat}}
+                </h2>
 
 
                 <h2>
@@ -58,7 +62,7 @@
                     Status
                 </h2>
 
-                <p [ngClass]="{
+                <p style="font-size: 24px ;" [ngClass]="{
                     'text-success' : leave.status === 'Approved',
                     'text-warning' : leave.status === 'Pending',
                     'text-danger' : leave.status === 'Reject'

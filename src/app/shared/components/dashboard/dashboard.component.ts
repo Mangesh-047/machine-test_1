@@ -13,7 +13,6 @@ import { Ileaves } from '../../model/leaves';
 })
 export class DashboardComponent implements OnInit {
 
-  leaveArrayLength!: number;
   approvedLength!: number
   rejectLength!: number
   leaveArray: Array<Ileaves> = []
@@ -28,16 +27,37 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this._leaveService.getAllLeaves()
+
       .subscribe(res => {
         // console.log(res);
         this.leaveArray = res
 
-        this.leaveArrayLength = res.length
         this.approvedLength = res.filter(e => e.status === 'Approved').length
         this.rejectLength = res.filter(e => e.status === 'Reject').length
+
+
+        res.forEach(e => {
+          // console.log(e.startDate.slice(0, 10));
+          // console.log(new Date(e.startDate.slice(0, 10)));
+          // console.log(new Date(e.endDate.slice(0, 10)));
+          // console.log(this.getDiffDays(e.startDate.slice(0, 10), e.endDate.slice(0, 10)));
+
+          e.numOfDat = this.getDiffDays(e.startDate, e.endDate)
+
+        })
+
       })
+
   }
 
+  getDiffDays(sDate: any, eDate: any) {
+    let startDate = new Date(sDate);
+    let endDate = new Date(eDate);
+
+    let Time = endDate.getTime() - startDate.getTime();
+    return Time / (1000 * 3600 * 24);
+
+  }
 
 
 
@@ -60,6 +80,16 @@ export class DashboardComponent implements OnInit {
             .subscribe(res => {
               console.log(res);
               this.leaveArray = res
+
+              this.leaveArray.forEach(e => {
+                // console.log(e.startDate.slice(0, 10));
+                // console.log(new Date(e.startDate.slice(0, 10)));
+                // console.log(new Date(e.endDate.slice(0, 10)));
+                // console.log(this.getDiffDays(e.startDate.slice(0, 10), e.endDate.slice(0, 10)));
+
+                e.numOfDat = this.getDiffDays(e.startDate, e.endDate)
+
+              })
             })
         }
       });
