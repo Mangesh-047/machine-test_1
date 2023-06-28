@@ -37,6 +37,10 @@ export class AuthComponent implements OnInit {
 
     }
 
+    this._userService.alreadyhaveac
+      .subscribe(res => {
+        this.alreadyHaveAccount = res
+      })
 
 
   }
@@ -109,9 +113,10 @@ export class AuthComponent implements OnInit {
         .then((res) => {
           this._snacbarService.snacbarOpen('Account created successully')
 
+          this._userService.alreadyhaveac.next(true)
           localStorage.setItem('userRole', userRole)
 
-          localStorage.getItem('userRole')?.includes('hod') ? this._router.navigate(['/hod-dashboard']) : this._router.navigate(['/staff-dashboard'])
+          // localStorage.getItem('userRole')?.includes('hod') ? this._router.navigate(['/hod-dashboard']) : this._router.navigate(['/staff-dashboard'])
 
           // console.log(res);
           // console.log(res.user);
