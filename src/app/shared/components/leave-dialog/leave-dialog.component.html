@@ -25,10 +25,14 @@
                     <div class="col-sm-6">
                         <mat-form-field color="primary" appearance="fill" class="example-full-width w-100">
                             <mat-label>End Date</mat-label>
-                            <input matInput [matDatepicker]="pickerName2" formControlName="endDate" [min]="minDate">
+                            <input matInput [matDatepicker]="pickerName2" formControlName="endDate"
+                                [min]="leaveForm.controls['startDate'].value">
                             <mat-hint>MM/DD/YYYY</mat-hint>
                             <mat-datepicker-toggle matSuffix [for]="pickerName2"></mat-datepicker-toggle>
                             <mat-datepicker #pickerName2 color="primary"></mat-datepicker>
+
+
+
                         </mat-form-field>
                     </div>
                 </div>
