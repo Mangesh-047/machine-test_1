@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,11 +13,15 @@ export class NavbarComponent implements OnInit, AfterViewInit {
 
   isLogin: boolean = false
 
+  // @ViewChild('sideNav')
+  // sideNav!: any
   constructor(
     private _authService: AuthService,
   ) { }
 
-
+  // toggleSidenav() {
+  //   this.sideNav.open()
+  // }
 
   ngAfterViewInit(): void {
     this._authService.loginStatus
