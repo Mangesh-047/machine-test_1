@@ -47,10 +47,10 @@ export class HodDashboardComponent implements OnInit {
 
 
   getDiffDays(sDate: any, eDate: any) {
-    var startDate = new Date(sDate);
-    var endDate = new Date(eDate);
+    let startDate = new Date(sDate);
+    let endDate = new Date(eDate);
 
-    var Time = endDate.getTime() - startDate.getTime();
+    let Time = endDate.getTime() - startDate.getTime();
     return Time / (1000 * 3600 * 24);
 
   }
