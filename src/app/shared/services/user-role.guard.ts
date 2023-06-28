@@ -19,12 +19,18 @@ export class UserRoleGuard implements CanActivate {
 
     let getLoginUserRole = localStorage.getItem('userRole')!
 
-    if (getLoginUserRole.includes('hod')) {
+    if (getLoginUserRole.includes(getUserRoleFromStaticData)) {
+      // console.log('yes hod');
+
       return true
     } else {
-      // this._router.navigate(['/dashboard'])
+      this._router.navigate(['/'])
+      // console.log('you cant go there');
+
       return false
     }
+
+
   }
 
 }

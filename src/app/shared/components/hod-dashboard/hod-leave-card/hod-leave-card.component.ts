@@ -24,6 +24,8 @@ export class HodLeaveCardComponent implements OnInit {
     //       this.leavesArray = res
     //     }
     //   )
+
+
   }
 
   onApprove(leave: Ileaves) {

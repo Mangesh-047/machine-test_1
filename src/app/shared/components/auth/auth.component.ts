@@ -65,7 +65,7 @@ export class AuthComponent implements OnInit {
 
           const uid = res.user?.uid
           // this._userService.userID.next(uid)
-
+          localStorage.setItem('userId', uid)
           this._fireStore.collection('user').doc(uid).get()
             .subscribe((res: any) => {
               // console.log(res.data());
@@ -98,9 +98,9 @@ export class AuthComponent implements OnInit {
       // let email = signUpForm.value.email
       // let pass = signUpForm.value.password
 
-      let { email, password, userRole, firstName } = signUpForm.value
+      let { email, password, userRole, firstName, lastName } = signUpForm.value
 
-      // console.log(email, password, userRole, firstName);
+      console.log(email, password, userRole, firstName, lastName);
 
 
       // console.log({ email, pass } = signUpForm.value);
@@ -108,13 +108,23 @@ export class AuthComponent implements OnInit {
       this._authService.SignUp(email, password)
         .then((res) => {
           this._snacbarService.snacbarOpen('Account created successully')
+
+          localStorage.setItem('userRole', userRole)
+
+          localStorage.getItem('userRole')?.includes('hod') ? this._router.navigate(['/hod-dashboard']) : this._router.navigate(['/staff-dashboard'])
+
           // console.log(res);
           // console.log(res.user);
           const uid = res.user?.uid;
+
+          localStorage.setItem('userId', uid)
           // console.log(uid);
           this._fireStore.collection('user').doc(uid).set({
             role: userRole,
-            firstName: firstName
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            pass: password
           })
         })
         .catch((err) => {

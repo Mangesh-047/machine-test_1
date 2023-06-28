@@ -22,6 +22,7 @@ import { LeaveStatusPipe } from './shared/pipes/leave-status.pipe';
 import { HodLeaveCardComponent } from './shared/components/hod-dashboard/hod-leave-card/hod-leave-card.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { ProfileComponent } from './shared/components/profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
     LeaveStatusPipe,
     HodLeaveCardComponent,
     PageNotFoundComponent,
-    DropdownDirective
+    DropdownDirective,
+    ProfileComponent
 
   ],
   imports: [

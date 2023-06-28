@@ -98,102 +98,121 @@
                                     <div class=" col-sm-6">
                                         <mat-form-field class="example-full-width w-100" appearance="fill">
                                             <mat-label>Last name</mat-label>
-                                            <input matInput>
+                                            <input matInput #SignUplasttName="ngModel" ngModel required name="lastName">
+
+                                            <mat-error *ngIf="SignUplasttName.errors?.['required']">
+                                                This field is Mandatory
+                                            </mat-error>
                                         </mat-form-field>
                                     </div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <mat-form-field class="example-full-width w-100" appearance="fill">
-                                            <mat-label>Contact</mat-label>
-                                            <input matInput>
+                                        <mat-form-field appearance="fill" class="example-full-width w-100">
+                                            <!-- <label class="sr-only" for="email">Email</label> -->
+                                            <mat-label>Enter your email</mat-label>
+                                            <input type="text" name="email" placeholder="jhon@gmail.com" matInput
+                                                ngModel #SignInemail="ngModel"
+                                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required="">
+
+                                            <mat-error *ngIf="SignInemail.errors?.['required']">
+                                                This field is Mandatory
+                                            </mat-error>
+                                            <mat-error *ngIf="SignInemail.errors?.['pattern']">
+                                                Please Enter Valid Email ID
+                                            </mat-error>
                                         </mat-form-field>
                                     </div>
                                     <div class="col-sm-6">
                                         <mat-form-field class="example-full-width w-100" appearance="fill">
-                                            <mat-label>Select an option</mat-label>
+                                            <mat-label>Contact</mat-label>
+                                            <input matInput #SignUpContactName="ngModel" ngModel name="contactName">
+
+                                            <mat-error *ngIf="SignUpContactName.errors?.['required']">
+                                                This field is Mandatory
+                                            </mat-error>
+                                        </mat-form-field>
+
+                                        <!-- <mat-form-field class="example-full-width w-100" appearance="fill">
+                                            <mat-label>Select Department</mat-label>
                                             <mat-select disableRipple>
                                                 <mat-option value="1">Option 1</mat-option>
                                                 <mat-option value="2">Option 2</mat-option>
                                                 <mat-option value="3">Option 3</mat-option>
                                             </mat-select>
+                                        </mat-form-field> -->
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <mat-form-field appearance="fill" class="example-full-width w-100">
+                                            <mat-label>Enter your password</mat-label>
+                                            <input matInput [type]="hide ? 'password' : 'text'"
+                                                #signInPassword="ngModel" ngModel name="password" required
+                                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
+                                            <button mat-icon-button matSuffix (click)="hide = !hide"
+                                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </button>
+
+                                            <mat-error *ngIf="signInPassword.errors?.['required']">
+                                                This field is Mandatory
+                                            </mat-error>
+                                            <mat-error *ngIf="signInPassword.errors?.['pattern']">
+                                                password should be container atleast one capital letter , one specail
+                                                character,
+                                                one
+                                                number
+                                                and
+                                                min length
+                                                of password should be 8
+                                            </mat-error>
+                                        </mat-form-field>
+
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <mat-form-field appearance="fill" class="example-full-width w-100">
+                                            <mat-label>ReEnter your password</mat-label>
+                                            <input matInput [type]="hide1 ? 'password' : 'text'" #RePassword="ngModel"
+                                                ngModel name="repassword" required
+                                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
+                                                [disabled]="(signInPassword.invalid)? true: false">
+
+                                            <button mat-icon-button matSuffix (click)=" hide1=!hide1"
+                                                [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
+                                                <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                            </button>
+
+                                            <!-- <mat-error *ngIf="RePassword.errors?.['required']">
+                                        This field is Mandatory
+                                    </mat-error> -->
+
+                                            <mat-error *ngIf="signInPassword.value !== RePassword.value">
+                                                please use same password
+                                            </mat-error>
+
+
+
+
+                                            <!-- <mat-error *ngIf=" signInRePassword.errors?.['pattern']">
+                                        password should be container atleast one capital letter , one specail character,
+                                        one
+                                        number
+                                        and
+                                        min length
+                                        of password should be 8
+                                    </mat-error> -->
                                         </mat-form-field>
                                     </div>
                                 </div>
 
-                                <mat-form-field appearance="fill">
-                                    <!-- <label class="sr-only" for="email">Email</label> -->
-                                    <mat-label>Enter your email</mat-label>
-                                    <input type="text" name="email" placeholder="jhon@gmail.com" matInput ngModel
-                                        #SignInemail="ngModel"
-                                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required="">
-
-                                    <mat-error *ngIf="SignInemail.errors?.['required']">
-                                        This field is Mandatory
-                                    </mat-error>
-                                    <mat-error *ngIf="SignInemail.errors?.['pattern']">
-                                        Please Enter Valid Email ID
-                                    </mat-error>
-                                </mat-form-field>
-
-                                <mat-form-field appearance="fill">
-                                    <mat-label>Enter your password</mat-label>
-                                    <input matInput [type]="hide ? 'password' : 'text'" #signInPassword="ngModel"
-                                        ngModel name="password" required
-                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
-                                    <button mat-icon-button matSuffix (click)="hide = !hide"
-                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                    </button>
-
-                                    <mat-error *ngIf="signInPassword.errors?.['required']">
-                                        This field is Mandatory
-                                    </mat-error>
-                                    <mat-error *ngIf="signInPassword.errors?.['pattern']">
-                                        password should be container atleast one capital letter , one specail character,
-                                        one
-                                        number
-                                        and
-                                        min length
-                                        of password should be 8
-                                    </mat-error>
-                                </mat-form-field>
 
 
-                                <mat-form-field appearance="fill">
-
-                                    <mat-label>ReEnter your password</mat-label>
-                                    <input matInput [type]="hide1 ? 'password' : 'text'" #RePassword="ngModel" ngModel
-                                        name="repassword" required
-                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
-                                        [disabled]="(signInPassword.invalid)? true: false">
-
-                                    <button mat-icon-button matSuffix (click)=" hide1=!hide1"
-                                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
-                                        <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
-                                    </button>
-
-                                    <!-- <mat-error *ngIf="RePassword.errors?.['required']">
-                                        This field is Mandatory
-                                    </mat-error> -->
-
-                                    <mat-error *ngIf="signInPassword.value !== RePassword.value">
-                                        please use same password
-                                    </mat-error>
-
-
-
-
-                                    <!-- <mat-error *ngIf=" signInRePassword.errors?.['pattern']">
-                                        password should be container atleast one capital letter , one specail character,
-                                        one
-                                        number
-                                        and
-                                        min length
-                                        of password should be 8
-                                    </mat-error> -->
-                                </mat-form-field>
 
                                 <!-- <mat-form-field appearance="fill">
                                     <mat-label>Select a UserRole</mat-label>
@@ -209,7 +228,7 @@
 
                                 <!-- [disabled]="signUpForm.invalid" -->
                                 <button mat-raised-button color="primary" type="submit">
-                                    Create Account
+                                    Register
                                 </button>
 
                             </form>

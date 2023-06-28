@@ -14,12 +14,13 @@ export class PageNotFoundComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._route.data
-      .subscribe(res => {
-        this.msg = res['pageNotFound']
-        console.log(res);
+    // this._route.data
+    //   .subscribe(res => {
+    //     this.msg = res['pageNotFound']
+    //     console.log(res);
 
-      })
+    //   })
+    this.msg = this._route.snapshot.data['errorMsg']
   }
 
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Ileaves, leaveStatus } from '../../model/leaves';
 import { environment } from 'src/environments/environment';
 import { LeaveService } from '../../services/leave.service';
@@ -12,12 +12,14 @@ import { LeaveService } from '../../services/leave.service';
 })
 export class LeaveDialogComponent implements OnInit {
 
+  
   minDate = new Date();
   // maxDate = new Date(2023, 11, 31);
   // defaultDate = new Date();
   constructor(
     // private _http: HttpClient
-    private _leaveService: LeaveService
+    private _leaveService: LeaveService,
+    private _fb: FormBuilder
   ) { }
 
   leaveForm!: FormGroup

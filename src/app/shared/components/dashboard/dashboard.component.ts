@@ -3,7 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LeaveDialogComponent } from '../leave-dialog/leave-dialog.component';
 import { Router } from '@angular/router';
 import { LeaveService } from '../../services/leave.service';
-import { map, tap } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 import { Ileaves } from '../../model/leaves';
 
 @Component({
@@ -17,6 +17,7 @@ export class DashboardComponent implements OnInit {
   approvedLength!: number
   rejectLength!: number
   leaveArray: Array<Ileaves> = []
+
 
   constructor(
     public dialog: MatDialog,

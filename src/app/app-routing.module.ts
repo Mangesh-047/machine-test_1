@@ -8,6 +8,7 @@ import { StaffLeavesCardComponent } from './shared/components/dashboard/staff-le
 import { HodLeaveCardComponent } from './shared/components/hod-dashboard/hod-leave-card/hod-leave-card.component';
 import { UserRoleGuard } from './shared/services/user-role.guard';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { ProfileComponent } from './shared/components/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -19,9 +20,9 @@ const routes: Routes = [
     path: 'staff-dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
-    data: {
-      userRole: 'staff'
-    }
+    // data: {
+    //   userRole: 'staff'
+    // }
   },
 
   // {
@@ -44,16 +45,20 @@ const routes: Routes = [
   {
     path: 'hod-dashboard',
     component: HodDashboardComponent,
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuard, UserRoleGuard],
     data: {
-      userRole: 'staff'
+      userRole: 'hod'
     }
-    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'page-not-found', component: PageNotFoundComponent,
     data: {
-      pageNotFound: 'Opps ....Page Not Found.....!!!! 404 '
+      errorMsg: 'Opps ....Page Not Found.....!!!! 404 '
     }
   },
   {

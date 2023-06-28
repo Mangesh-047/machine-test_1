@@ -1,0 +1,24 @@
+<div class="card shadow-lg">
+    <div class=" card-body" *ngIf="userObj">
+        <h2>Profile Information</h2>
+
+        <h3>
+            FirstName : {{userObj.firstName}}
+        </h3>
+        <h3>
+            LastName : {{userObj.lastName}}
+        </h3>
+        <h3>
+            Email : {{userObj.email}}
+        </h3>
+        <!-- <h3>
+            Contact : {{userObj.contact}}
+        </h3> -->
+        <h3>
+            Role : {{userObj.role}}
+        </h3>
+
+    </div>
+</div>
+
+<!-- {{userId | json}} -->

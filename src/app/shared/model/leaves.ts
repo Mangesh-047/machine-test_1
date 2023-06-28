@@ -12,6 +12,7 @@ export interface Ileaves {
     endDate: string;
     reason: string;
     status: leaveStatus
+    numOfDat?: number
 }
 
 export enum leaveStatus {

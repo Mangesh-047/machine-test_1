@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -13,19 +14,21 @@ export class NavbarComponent implements OnInit, AfterViewInit {
   isLogin: boolean = false
 
   constructor(
-    private _authService: AuthService
+    private _authService: AuthService,
   ) { }
 
 
-  ngAfterViewInit(): void {
-  }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this._authService.loginStatus
       .subscribe(res => {
         this.isLogin = res
         this.userRole = localStorage.getItem('userRole')!
       })
+  }
+
+  ngOnInit(): void {
+
 
 
 
@@ -43,4 +46,6 @@ export class NavbarComponent implements OnInit, AfterViewInit {
     this._authService.loginStatus.next(false)
 
   }
+
+
 }
