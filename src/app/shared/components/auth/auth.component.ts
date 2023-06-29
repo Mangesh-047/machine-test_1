@@ -124,7 +124,7 @@ export class AuthComponent implements OnInit {
             this._snacbarService.snacbarOpen('Account created successully')
 
             this._userService.alreadyhaveac.next(true)
-            localStorage.setItem('userRole', userRole)
+            // localStorage.setItem('userRole', userRole)
 
             // localStorage.getItem('userRole')?.includes('hod') ? this._router.navigate(['/hod-dashboard']) : this._router.navigate(['/staff-dashboard'])
 
@@ -132,7 +132,7 @@ export class AuthComponent implements OnInit {
             // console.log(res.user);
             const uid = res.user?.uid;
 
-            localStorage.setItem('userId', uid)
+            // localStorage.setItem('userId', uid)
             // console.log(uid);
             this._fireStore.collection('user').doc(uid).set({
               role: userRole,
@@ -150,6 +150,7 @@ export class AuthComponent implements OnInit {
         // this._snacbarService.snacbarOpen('password does not match')
 
         this._snackBar.openFromComponent(SnacbarComponent, {
+
           duration: 3000,
         });
       }
