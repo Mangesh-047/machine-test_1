@@ -19,10 +19,10 @@ const routes: Routes = [
   {
     path: 'staff-dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
-    // data: {
-    //   userRole: 'staff'
-    // }
+    canActivate: [AuthGuard, UserRoleGuard],
+    data: {
+      userRole: 'staff'
+    }
   },
 
   // {
