@@ -14,7 +14,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
-
+import { MatMenuModule } from '@angular/material/menu';
 const mat = [
   MatDialogModule,
   MatButtonModule,
@@ -29,7 +29,8 @@ const mat = [
   MatRadioModule,
   MatToolbarModule,
   MatSidenavModule,
-  MatListModule
+  MatListModule,
+  MatMenuModule
 ]
 
 

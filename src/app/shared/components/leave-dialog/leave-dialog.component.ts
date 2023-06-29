@@ -5,6 +5,7 @@ import { Ileaves, leaveStatus } from '../../model/leaves';
 import { environment } from 'src/environments/environment';
 import { LeaveService } from '../../services/leave.service';
 import { SnacbarService } from '../../services/snacbar.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-leave-dialog',
@@ -21,7 +22,8 @@ export class LeaveDialogComponent implements OnInit {
     // private _http: HttpClient
     private _leaveService: LeaveService,
     private _fb: FormBuilder,
-    private _snacbarService: SnacbarService
+    private _snacbarService: SnacbarService,
+    private _fireStore: AngularFirestore
   ) { }
 
   leaveForm!: FormGroup
@@ -59,7 +61,12 @@ export class LeaveDialogComponent implements OnInit {
         status: leaveStatus.Pending,
       }
 
-      // console.log(obj);
+      console.log(obj);
+
+      // let uid = localStorage.getItem('userId')!
+      // console.log(uid);
+
+      // this._fireStore.collection('user').doc(uid).set()
 
       this._leaveService.sendLeaveRequest(obj)
         .subscribe(

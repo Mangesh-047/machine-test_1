@@ -19,7 +19,6 @@ export class AuthComponent implements OnInit {
 
   alreadyHaveAccount: boolean = false
 
-
   constructor(
     private _authService: AuthService,
     private _fireStore: AngularFirestore,
@@ -44,6 +43,7 @@ export class AuthComponent implements OnInit {
 
 
   }
+
 
   onLogin(loginForm: NgForm) {
     if (loginForm.valid) {

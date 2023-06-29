@@ -25,9 +25,11 @@
                                     <mat-error *ngIf="logInEmail.errors?.['required']">
                                         This field is Mandatory
                                     </mat-error>
+
                                     <mat-error *ngIf="logInEmail.errors?.['pattern']">
                                         Please Enter Valid Email ID
                                     </mat-error>
+
                                 </mat-form-field>
 
                                 <mat-form-field appearance="fill">
@@ -68,6 +70,8 @@
                             </p>
 
                         </ng-container>
+
+
                         <ng-container *ngIf="!alreadyHaveAccount">
                             <form action="" #signUpForm="ngForm" class="form" (ngSubmit)="onSignUp(signUpForm)">
 
@@ -92,9 +96,8 @@
                                                 This field is Mandatory
                                             </mat-error>
                                         </mat-form-field>
-
-
                                     </div>
+
                                     <div class=" col-sm-6">
                                         <mat-form-field class="example-full-width w-100" appearance="fill">
                                             <mat-label>Last name</mat-label>
@@ -113,13 +116,13 @@
                                             <!-- <label class="sr-only" for="email">Email</label> -->
                                             <mat-label>Enter your email</mat-label>
                                             <input type="text" name="email" placeholder="jhon@gmail.com" matInput
-                                                ngModel #SignInemail="ngModel" class="text-lowercase"
+                                                ngModel #SignUpemail="ngModel" class="text-lowercase"
                                                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required>
 
-                                            <mat-error *ngIf="SignInemail.errors?.['required']">
+                                            <mat-error *ngIf="SignUpemail.errors?.['required']">
                                                 This field is Mandatory
                                             </mat-error>
-                                            <mat-error *ngIf="SignInemail.errors?.['pattern']">
+                                            <mat-error *ngIf="SignUpemail.errors?.['pattern']">
                                                 Please Enter Valid Email ID
                                             </mat-error>
                                         </mat-form-field>
@@ -132,6 +135,7 @@
                                             <mat-error *ngIf="SignUpContactName.errors?.['required']">
                                                 This field is Mandatory
                                             </mat-error>
+
 
                                             <!-- <mat-label>Telephone</mat-label>
                                             <span matPrefix>+1 &nbsp;</span>
@@ -157,17 +161,17 @@
                                         <mat-form-field appearance="fill" class="example-full-width w-100">
                                             <mat-label>Enter your password</mat-label>
                                             <input matInput [type]="hide ? 'password' : 'text'"
-                                                #signInPassword="ngModel" ngModel name="password" required
+                                                #signUpPassword="ngModel" ngModel name="password" required
                                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
                                             <button mat-icon-button matSuffix (click)="hide = !hide"
                                                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                             </button>
 
-                                            <mat-error *ngIf="signInPassword.errors?.['required']">
+                                            <mat-error *ngIf="signUpPassword.errors?.['required']">
                                                 This field is Mandatory
                                             </mat-error>
-                                            <mat-error *ngIf="signInPassword.errors?.['pattern']">
+                                            <mat-error *ngIf="signUpPassword.errors?.['pattern']">
                                                 password should be container atleast one capital letter , one specail
                                                 character,
                                                 one
@@ -186,7 +190,7 @@
                                             <input matInput [type]="hide1 ? 'password' : 'text'" #RePassword="ngModel"
                                                 ngModel name="repassword" required
                                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
-                                                [disabled]="(signInPassword.invalid)? true: false">
+                                                [disabled]="(signUpPassword.invalid)? true: false">
 
                                             <button mat-icon-button matSuffix (click)=" hide1=!hide1"
                                                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
@@ -197,9 +201,14 @@
                                         This field is Mandatory
                                     </mat-error> -->
 
-                                            <mat-error *ngIf="signInPassword.value !== RePassword.value">
+                                            <mat-error *ngIf="signUpPassword.value !== RePassword.value">
                                                 please use same password
+                                                <mat-error
+                                                    *ngIf="signUpPassword.value.length != RePassword.value.length">
+                                                    lenth mis math
+                                                </mat-error>
                                             </mat-error>
+
 
 
 
@@ -249,10 +258,10 @@
 
 
                             </p>
-
-                            <!-- <p>
-                                {{signInPassword.value}}
-                                {{signInRePassword.value}}
+                            <!-- 
+                            <p>
+                                {{signUpPassword.value.length}}
+                                {{RePassword.value.length}}
                             </p> -->
 
                         </ng-container>

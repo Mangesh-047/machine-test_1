@@ -1,47 +1,80 @@
-<!-- <mat-sidenav-container fullscreen>
+<mat-sidenav-container *ngIf="isLogin">
+
     <mat-sidenav #sideNav>
         <mat-nav-list>
-            <a href="" mat-list-item>
+            <a routerLink="/" mat-list-item (click)="sideNav.toggle()">
                 <mat-icon>
                     house
                 </mat-icon>
                 Home
             </a>
-            <a href="" mat-list-item>
+            <a routerLink="/profile" mat-list-item (click)="sideNav.toggle()">
+                <!-- <mat-icon>
+          description
+        </mat-icon>
+        <mat-icon>
+
+          perm_identity
+        </mat-icon> -->
                 <mat-icon>
-                    profile
+                    person
                 </mat-icon>
                 profile
             </a>
-            <a href="" mat-list-item>
+            <a routerLink="javascript:;" mat-list-item (click)="sideNav.toggle()">
                 <mat-icon>
-                    menu
+                    forum
                 </mat-icon>
                 about
             </a>
         </mat-nav-list>
     </mat-sidenav>
-    <mat-toolbar color="primary">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
-            (click)="sideNav.open()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <span>My App</span>
-        <span class="example-spacer"></span>
+    <mat-toolbar color="primary" class="d-flex justify-content-between">
+        <div>
+            <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon"
+                (click)="sideNav.open()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <span>My App</span>
+            <span class="example-spacer"></span>
 
+        </div>
 
-        <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <div>
+            <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
             <mat-icon>favorite</mat-icon>
         </button>
         <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
             <mat-icon>share</mat-icon>
-        </button>
+        </button> -->
+            <!-- <a mat-button [mat-menu-trigger-for]="drop">
+                DropDown
+            </a>
+
+            <mat-menu #drop>
+                <button mat-menu-item>
+                    1st
+                </button>
+                <button mat-menu-item>
+                    1st
+                </button>
+            </mat-menu> -->
+
+            <button mat-flat-button color="warn" (click)="logOut()">
+                <mat-icon>
+                    account_circle
+                </mat-icon>
+                Log Out
+            </button>
+
+
+        </div>
+
     </mat-toolbar>
-</mat-sidenav-container> -->
 
+</mat-sidenav-container>
 
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="isLogin">
+<!-- <nav class="navbar navbar-expand-lg navbar-dark modify-nav" *ngIf="false">
     <a class="navbar-brand">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,8 +95,8 @@
 
             <li class="nav-item " routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link" routerLink="/profile">Profile <span class="sr-only">(current)</span></a>
-            </li>
-            <!-- 
+            </li> -->
+<!-- 
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
                 *ngIf="userRole.includes('USER')">
                 <a class="nav-link" routerLink="/staff-leaves">Leaves</a>
@@ -72,20 +105,20 @@
                 *ngIf="userRole.includes('ADMIN')">
                 <a class="nav-link" routerLink="/hod-leaves">hod Leaves</a>
             </li> -->
-            <li class="nav-item">
-                <!-- <button class="btn btn-success" (click)="logIn()">Log In</button> -->
-                <a class="nav-link" disable>Link</a>
+<!-- <li class="nav-item"> -->
+<!-- <button class="btn btn-success" (click)="logIn()">Log In</button> -->
+<!-- <a class="nav-link" disable>Link</a> -->
 
-            </li>
+<!-- </li>
 
 
-        </ul>
+</ul>
 
-        <button mat-raised-button color="warn" (click)="logOut()">
-            <mat-icon>
-                account_circle
-            </mat-icon>
-            Log Out
-        </button>
-    </div>
-</nav>
+<button mat-raised-button color="warn" (click)="logOut()">
+    <mat-icon>
+        account_circle
+    </mat-icon>
+    Log Out
+</button>
+</div>
+</nav> -->
