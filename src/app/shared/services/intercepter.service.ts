@@ -1,12 +1,15 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, delay, finalize } from 'rxjs';
+import { Observable, Subject, delay, finalize, takeUntil } from 'rxjs';
 import { LoaderService } from './loader.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IntercepterService implements HttpInterceptor {
+
+
+  unSubscribeAll$: Subject<void> = new Subject<void>()
 
   constructor(
     private _loaderService: LoaderService
@@ -27,9 +30,17 @@ export class IntercepterService implements HttpInterceptor {
 
     return next.handle(authRequest)
       .pipe(
-        // takeUntil(this.unSubscribeAll$),
-        delay(500),
+        takeUntil(this.unSubscribeAll$),
+        // delay(500),
         finalize(() => this._loaderService.loaderStatus.next(false))
       )
+
+
+
+  }
+
+  unSubscribeAll(): void {
+    this.unSubscribeAll$.next()
+    this.unSubscribeAll$.complete()
   }
 }

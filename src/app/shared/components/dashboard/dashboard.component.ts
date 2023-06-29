@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { LeaveDialogComponent } from '../leave-dialog/leave-dialog.component';
 import { Router } from '@angular/router';
 import { LeaveService } from '../../services/leave.service';
 import { Observable, map, tap } from 'rxjs';
 import { Ileaves } from '../../model/leaves';
+import { IntercepterService } from '../../services/intercepter.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   approvedLength!: number
   rejectLength!: number
@@ -21,7 +22,8 @@ export class DashboardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private _router: Router,
-    private _leaveService: LeaveService
+    private _leaveService: LeaveService,
+    private _intercepterService: IntercepterService
 
   ) { }
 
@@ -93,6 +95,11 @@ export class DashboardComponent implements OnInit {
             })
         }
       });
+  }
+
+
+  ngOnDestroy(): void {
+    this._intercepterService.unSubscribeAll()
   }
 
 }

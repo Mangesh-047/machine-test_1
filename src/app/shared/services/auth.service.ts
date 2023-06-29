@@ -19,28 +19,11 @@ export class AuthService {
     private _snacbar: SnacbarService
   ) { }
 
-  // userData: Array<any> = [
-  //   {
-  //     email: '123@gmail.com',
-  //     pass: '123'
-  //   }
-  // ]
-  // isAuthenticated(): Promise<boolean> {
-  //   return new Promise((res) => {
-  //     res(this.loginStatus)
-  //   })
-  // }
+
 
   logInToApp(email: string, pass: string): Promise<any> {
 
-    // if ((this.userData.find(e => e.pass === '123')) && (this.userData.find(e => e.email === '123@gmail.com'))) {
-    //   console.log('match');
 
-    //   this.loginStatus = true
-    //   this._router.navigate(['/'])
-    // } else {
-    //   alert('error')
-    // }
     return this._afAuth.signInWithEmailAndPassword(email as string, pass as string)
   }
 
@@ -53,8 +36,9 @@ export class AuthService {
       .then(res => {
 
         localStorage.removeItem('userRole')
+        localStorage.removeItem('userId')
         this._router.navigate(['/'])
-        this._snacbar.snacbarOpen('Log Out.........!!!!  successfully')
+        this._snacbar.snacbarOpen('Log Out.........!!!!')
       })
   }
 

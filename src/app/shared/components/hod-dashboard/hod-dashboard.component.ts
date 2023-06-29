@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { LeaveService } from '../../services/leave.service';
 import { Ileaves, leaveStatus } from '../../model/leaves';
+import { IntercepterService } from '../../services/intercepter.service';
 
 @Component({
   selector: 'app-hod-dashboard',
   templateUrl: './hod-dashboard.component.html',
   styleUrls: ['./hod-dashboard.component.scss']
 })
-export class HodDashboardComponent implements OnInit {
+export class HodDashboardComponent implements OnInit, OnDestroy {
   // uid!: string
 
   leavesArray: Array<Ileaves> = []
@@ -17,7 +18,8 @@ export class HodDashboardComponent implements OnInit {
   constructor(
     // private fbs: AngularFirestore,
     // private _userService: UserService,
-    private _leaveService: LeaveService
+    private _leaveService: LeaveService,
+    private __intercepterService: IntercepterService
   ) { }
   ngOnInit(): void {
     this._leaveService.getAllLeaves()
@@ -55,7 +57,9 @@ export class HodDashboardComponent implements OnInit {
 
   }
 
-
+  ngOnDestroy(): void {
+    this.__intercepterService.unSubscribeAll()
+  }
 
 
 

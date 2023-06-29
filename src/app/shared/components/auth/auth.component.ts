@@ -17,6 +17,7 @@ export class AuthComponent implements OnInit {
   hide = true;
   hide1 = true;
 
+
   alreadyHaveAccount: boolean = false
 
   constructor(
