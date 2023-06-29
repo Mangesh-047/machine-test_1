@@ -196,15 +196,17 @@
                                                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">
                                                 <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
                                             </button>
-
-                                            <!-- <mat-error *ngIf="RePassword.errors?.['required']">
-                                        This field is Mandatory
-                                    </mat-error> -->
+                                            <!-- 
+                                            <mat-error *ngIf="RePassword.errors?.['required']">
+                                                This field is Mandatory
+                                            </mat-error> -->
 
                                             <mat-error *ngIf="signUpPassword.value !== RePassword.value">
                                                 please use same password
 
                                             </mat-error>
+
+
 
 
 
@@ -226,6 +228,7 @@
                                         of password should be 8
                                     </mat-error> -->
                                         </mat-form-field>
+
                                     </div>
                                 </div>
 

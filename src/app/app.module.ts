@@ -23,6 +23,7 @@ import { HodLeaveCardComponent } from './shared/components/hod-dashboard/hod-lea
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { ProfileComponent } from './shared/components/profile/profile.component';
+import { SnacbarComponent } from './shared/components/snacbar/snacbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { ProfileComponent } from './shared/components/profile/profile.component'
     HodLeaveCardComponent,
     PageNotFoundComponent,
     DropdownDirective,
-    ProfileComponent
+    ProfileComponent,
+    SnacbarComponent
 
   ],
   imports: [

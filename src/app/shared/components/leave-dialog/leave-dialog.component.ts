@@ -61,7 +61,7 @@ export class LeaveDialogComponent implements OnInit {
         status: leaveStatus.Pending,
       }
 
-      console.log(obj);
+      // console.log(obj);
 
       // let uid = localStorage.getItem('userId')!
       // console.log(uid);
@@ -71,7 +71,7 @@ export class LeaveDialogComponent implements OnInit {
       this._leaveService.sendLeaveRequest(obj)
         .subscribe(
           res => {
-            console.log(res);
+            // console.log(res);
             this._snacbarService.snacbarOpen('Leave Submitted Successfully')
           },
           err => {
