@@ -36,7 +36,9 @@
                                     <mat-label>Enter your password</mat-label>
                                     <input matInput [type]="hide ? 'password' : 'text'" #logInPassword="ngModel" ngModel
                                         name="password" required
-                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
+                                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
+                                        (cut)="$event.preventDefault()" (copy)="$event.preventDefault()"
+                                        (paste)="$event.preventDefault()" zaq1ZAQ!>
                                     <button mat-icon-button matSuffix (click)="hide = !hide"
                                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -130,12 +132,16 @@
                                     <div class="col-sm-6">
                                         <mat-form-field class="example-full-width w-100" appearance="fill">
                                             <mat-label>Contact</mat-label>
-                                            <input matInput #SignUpContactName="ngModel" ngModel name="contact">
+                                            <input matInput #SignUpContactName="ngModel" ngModel name="contact" required
+                                                pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$">
 
                                             <mat-error *ngIf="SignUpContactName.errors?.['required']">
                                                 This field is Mandatory
                                             </mat-error>
 
+                                            <mat-error *ngIf="SignUpContactName.errors?.['pattern']">
+                                                please enter valid contact number
+                                            </mat-error>
 
                                             <!-- <mat-label>Telephone</mat-label>
                                             <span matPrefix>+1 &nbsp;</span>
@@ -162,7 +168,9 @@
                                             <mat-label>Enter your password</mat-label>
                                             <input matInput [type]="hide ? 'password' : 'text'"
                                                 #signUpPassword="ngModel" ngModel name="password" required
-                                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$">
+                                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
+                                                (cut)="$event.preventDefault()" (copy)="$event.preventDefault()"
+                                                (paste)="$event.preventDefault()">
                                             <button mat-icon-button matSuffix (click)="hide = !hide"
                                                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -190,7 +198,9 @@
                                             <input matInput [type]="hide1 ? 'password' : 'text'" #RePassword="ngModel"
                                                 ngModel name="repassword" required
                                                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
-                                                [disabled]="(signUpPassword.invalid)? true: false">
+                                                [disabled]="(signUpPassword.invalid)? true: false"
+                                                (cut)="$event.preventDefault()" (copy)="$event.preventDefault()"
+                                                (paste)="$event.preventDefault()">
 
                                             <button mat-icon-button matSuffix (click)=" hide1=!hide1"
                                                 [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide1">

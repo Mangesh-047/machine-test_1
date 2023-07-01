@@ -31,7 +31,7 @@ export class IntercepterService implements HttpInterceptor {
     return next.handle(authRequest)
       .pipe(
         takeUntil(this.unSubscribeAll$),
-        // delay(500),
+        delay(500),
         finalize(() => this._loaderService.loaderStatus.next(false))
       )
 
