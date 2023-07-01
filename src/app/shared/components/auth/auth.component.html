@@ -38,7 +38,7 @@
                                         name="password" required
                                         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{7,}$"
                                         (cut)="$event.preventDefault()" (copy)="$event.preventDefault()"
-                                        (paste)="$event.preventDefault()" zaq1ZAQ!>
+                                        (paste)="$event.preventDefault()">
                                     <button mat-icon-button matSuffix (click)="hide = !hide"
                                         [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
