@@ -113,9 +113,10 @@ export class AuthComponent implements OnInit {
         // let email = signUpForm.value.email
         // let pass = signUpForm.value.password
 
-        let { email, password, userRole, firstName, lastName } = signUpForm.value
+        let { email, password, userRole, firstName, lastName, contact } = signUpForm.value
 
-        // console.log(email, password, userRole, firstName, lastName);
+        // console.log(email, password, userRole, firstName, lastName,
+        //   contact);
 
         // console.log({ email, pass } = signUpForm.value);
 
@@ -139,7 +140,8 @@ export class AuthComponent implements OnInit {
               firstName: firstName,
               lastName: lastName,
               email: email.toLowerCase(),
-              pass: password
+              pass: password,
+              contact: contact
             })
           })
           .catch((err) => {
